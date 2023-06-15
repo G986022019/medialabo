@@ -8,3 +8,11 @@ tfoot {
     background-color: #333;
     color: #fff;
 }
+#tenki{
+    list-style-type: none;
+}
+p{
+    color:yellow;
+    font-weight: bold;
+    background:black;
+}
