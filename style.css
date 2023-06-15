@@ -1,3 +1,34 @@
-h1{
+body{
+    background:black;
+    width:1280px;
+}
+
+h1,h2,p,ul{
     color:white;
+}
+.daika{
+    display:flex;
+    flex-direction: row;
+    border:3px solid #666666;
+}
+.daika>div{
+    padding:20px 20px 20px 20px;
+}
+
+
+#kakuka{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 300px 300px;
+    grid-gap: 20px;
+    
+}
+a:link{
+    color:blue;
+}
+a:visited{
+    color:#666666;
+}
+a:hover{
+    text-decoration:none;
 }
