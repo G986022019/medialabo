@@ -14,7 +14,9 @@ h1,h2,p,ul{
 .daika>div{
     padding:20px 20px 20px 20px;
 }
-
+li{
+    list-style-type:none;
+}
 
 #kakuka{
     display:grid;
