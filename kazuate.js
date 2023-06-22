@@ -28,7 +28,7 @@ function hantei() {
         console.log('まちがい．残念でした答えは'+kotae+'ですよ');
       }
   }else if(kaisu>3){
-    console.log('答えは'+'でした。すでにゲームは終わっています。');
+    console.log('答えは'+kotae+'でした。すでにゲームは終わっています。');
   }else{
     if(yoso===kotae){
         console.log('正解です．おめでとう!');
