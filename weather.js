@@ -47,29 +47,29 @@ let data = {
 kensaku();
 ////////// 課題3-2 ここからプログラムを書こう
 function kensaku(){
-  console.log(data.coord.lon);
-  console.log(data.coord.lat);
+  console.log('緯度:'+data.coord.lon);
+  console.log('経度:'+data.coord.lat);
   //console.log(data.weather[0]);
   console.log(data.weather[0].id);
   console.log(data.weather[0].main);
-  console.log(data.weather[0].description);
+  console.log('天気:'+data.weather[0].description);
   console.log(data.weather[0].icon);
 
   console.log(data.base);
 
   console.log(data.main.temp);
   console.log(data.main.feels_like);
-  console.log(data.main.temp_min);
-  console.log(data.main.temp_max);
+  console.log('最低気温:'+data.main.temp_min);
+  console.log('最高気温:'+data.main.temp_max);
   console.log(data.main.pressure);
-  console.log(data.main.humidity);
+  console.log('湿度:'+data.main.humidity);
   console.log(data.main.sea_level);
   console.log(data.main.grnd_level);
 
   console.log(data.visibility);
 
-  console.log(data.wind.speed);
-  console.log(data.wind.deg);
+  console.log('風速:'+data.wind.speed);
+  console.log('風向:'+data.wind.deg);
   console.log(data.wind.gust);
 
   console.log(data.clouds.all);
@@ -86,7 +86,7 @@ function kensaku(){
 
   console.log(data.id);
 
-  console.log(data.name);
+  console.log('都市名:'+data.name);
   
   console.log(data.cod);
 }
