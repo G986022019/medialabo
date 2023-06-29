@@ -47,7 +47,45 @@ let data = {
 kensaku();
 ////////// 課題3-2 ここからプログラムを書こう
 function kensaku(){
-  console.log('緯度:'+data.coord.lon);
+
+  let di=document.querySelector('div#result');
+  let p1=document.createElement('p');
+  p1.textContent='緯度:'+data.coord.lon;
+  di.insertAdjacentElement('beforeend',p1);
+
+  let p2=document.createElement('p');
+  p2.textContent='経度:'+data.coord.lat;
+  p1.insertAdjacentElement('afterend',p2);
+
+  let p3=document.createElement('p');
+  p3.textContent='天気:'+data.weather[0].description;
+  p2.insertAdjacentElement('afterend',p3);
+
+  let p4=document.createElement('p');
+  p4.textContent='最低気温:'+data.main.temp_min;
+  p3.insertAdjacentElement('afterend',p4);
+
+  let p5=document.createElement('p');
+  p5.textContent='最高気温:'+data.main.temp_max;
+  p4.insertAdjacentElement('afterend',p5);
+
+  let p6=document.createElement('p');
+  p6.textContent='湿度:'+data.main.humidity;
+  p5.insertAdjacentElement('afterend',p6);
+
+  let p7=document.createElement('p');
+  p7.textContent='風速:'+data.wind.speed;
+  p6.insertAdjacentElement('afterend',p7);
+
+  let p8=document.createElement('p');
+  p8.textContent='風向:'+data.wind.deg;
+  p7.insertAdjacentElement('afterend',p8);
+
+  let p9=document.createElement('p');
+  p9.textContent='都市名:'+data.name;
+  p8.insertAdjacentElement('afterend',p9);
+
+ /* console.log('緯度:'+data.coord.lon);
   console.log('経度:'+data.coord.lat);
   //console.log(data.weather[0]);
   console.log(data.weather[0].id);
@@ -89,4 +127,5 @@ function kensaku(){
   console.log('都市名:'+data.name);
   
   console.log(data.cod);
+*/
 }
