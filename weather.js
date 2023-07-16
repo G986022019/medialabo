@@ -44,6 +44,14 @@ let data = {
   "name": "北京市",
   "cod": 200
 };
+let b=document.querySelector('button#btn');
+b.addEventListener('click',search);
+function search(){
+  let s=document.querySelector('select#toshi');
+  let idx=s.options[s.selectedIndex];
+  let id=idx.id;
+  console.log('検索キーは:'+id);
+}
 kensaku();
 ////////// 課題3-2 ここからプログラムを書こう
 function kensaku(){
