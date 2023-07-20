@@ -1,4 +1,4 @@
-let data = {
+/*let data = {
   "coord": {
     "lon": 116.3972,
     "lat": 39.9075
@@ -44,6 +44,7 @@ let data = {
   "name": "北京市",
   "cod": 200
 };
+*/
 let b=document.querySelector('button#btn');
 b.addEventListener('click',search);
 function search(){
@@ -53,14 +54,19 @@ function search(){
   let id=idx.id;
   console.log('検索キーは:'+id);
   document.addEventListener('keydown',handleKeydown);
+
+  let url='https://www.nishita-lab.org/web-contents/jsons/openweather/'+id+'.json';
+  axios.get(url).then(showResult).catch(showError).then(finish);
 }
 function handleKeydown(){
   overlay.style.display='none';
   document.removeEventListener('keydown',handleKeydown);
+  let rem=document.querySelectorAll('p');
+  rem.forEach(rem=>rem.remove());
 }
-kensaku();
 ////////// 課題3-2 ここからプログラムを書こう
-function kensaku(){
+function showResult(resp){
+  let data=resp.data;
 
   let di=document.querySelector('div#result');
   let p1=document.createElement('p');
@@ -98,7 +104,14 @@ function kensaku(){
   let p9=document.createElement('p');
   p9.textContent='都市名:'+data.name;
   p8.insertAdjacentElement('afterend',p9);
+}
 
+function showError(err){
+  console.log(err);
+}
+function finish(){
+  console.log('Ajax 通信が終わりました');
+}
  /* console.log('緯度:'+data.coord.lon);
   console.log('経度:'+data.coord.lat);
   //console.log(data.weather[0]);
@@ -142,4 +155,3 @@ function kensaku(){
   
   console.log(data.cod);
 */
-}
