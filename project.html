@@ -80,7 +80,8 @@
       </table>
    -->
       <h1>世界の天気</h1>
-       <div class="search-bar">
+
+      <div class="search-bar">
          <label for="toshi" >検索可能な都市:</label>
          <select name="toshi" id="toshi">
             <option value="" >..</option>
@@ -95,7 +96,7 @@
             <option value="Paris" id="2968815">Paris パリ</option>
             <option value="RiodeJaneiro" id="3451189">Rio de Janeiro リオデジャネイロ</option>
             <option value="NewYork" id="5128581">New York ニューヨーク</option>
-            <option value="LosAngeles" id="5369361">Los Angeles ロサンゼルス </option>
+            <option value="LosAngeles" id="5368361">Los Angeles ロサンゼルス </option>
 
           </select>
          <button id="btn">
@@ -103,6 +104,51 @@
          検索
          </button>
        </div>
+
+       <form>
+         <fieldset>
+            <legend>詳しい検索したい情報
+               <div>（基本的な情報は天気、最低気温、最高気温）</div>
+            </legend>
+            <div>
+               <label>
+                  <input type="checkbox" id="humidity" name="jyoho" value="humidity"/>
+                  湿度
+               </label>
+            </div>
+            <div>
+               <label>
+                  <input type="checkbox" id="windspeed" name="jyoho" value="windspeed"/>
+                  風速
+               </label>
+            </div>
+            <div>
+               <label>
+                  <input type="checkbox" id="winddeg" name="jyoho" value="winddeg"/>
+                  風向
+               </label>
+            </div>
+            <div>
+               <label>
+                  <input type="checkbox" id="lon" name="jyoho" value="lon"/>
+                  緯度
+               </label>
+            </div>
+            <div>
+               <label>
+                  <input type="checkbox" id="lat" name="jyoho" value="lat"/>
+                  経度
+               </label>
+            </div>
+         </fieldset>
+      </form>
+      </div>
+
+      <div id="overlay">
+         <div id="result">
+
+         </div>
+      </div>
    <!--
 
    
@@ -118,7 +164,6 @@
          <li>都市名: 北京市</li>
       </ul>
     -->
-      <div id="result"></div>
    </body>
       
 </html>

@@ -47,10 +47,16 @@ let data = {
 let b=document.querySelector('button#btn');
 b.addEventListener('click',search);
 function search(){
+  overlay.style.display='block';
   let s=document.querySelector('select#toshi');
   let idx=s.options[s.selectedIndex];
   let id=idx.id;
   console.log('検索キーは:'+id);
+  document.addEventListener('keydown',handleKeydown);
+}
+function handleKeydown(){
+  overlay.style.display='none';
+  document.removeEventListener('keydown',handleKeydown);
 }
 kensaku();
 ////////// 課題3-2 ここからプログラムを書こう
