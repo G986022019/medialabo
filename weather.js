@@ -1,52 +1,6 @@
-/*let data = {
-  "coord": {
-    "lon": 116.3972,
-    "lat": 39.9075
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "曇りがち",
-      "icon": "04d"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 9.94,
-    "feels_like": 8.65,
-    "temp_min": 9.94,
-    "temp_max": 9.94,
-    "pressure": 1022,
-    "humidity": 14,
-    "sea_level": 1022,
-    "grnd_level": 1016
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 2.65,
-    "deg": 197,
-    "gust": 4.84
-  },
-  "clouds": {
-    "all": 53
-  },
-  "dt": 1646542386,
-  "sys": {
-    "type": 1,
-    "id": 9609,
-    "country": "CN",
-    "sunrise": 1646520066,
-    "sunset": 1646561447
-  },
-  "timezone": 28800,
-  "id": 1816670,
-  "name": "北京市",
-  "cod": 200
-};
-*/
 let b=document.querySelector('button#btn');
 b.addEventListener('click',search);
+
 function search(){
   overlay.style.display='block';
   let s=document.querySelector('select#toshi');
@@ -58,71 +12,93 @@ function search(){
   let url='https://www.nishita-lab.org/web-contents/jsons/openweather/'+id+'.json';
   axios.get(url).then(showResult).catch(showError).then(finish);
 }
+
 function handleKeydown(){
   overlay.style.display='none';
   document.removeEventListener('keydown',handleKeydown);
   let rem=document.querySelectorAll('p');
   rem.forEach(rem=>rem.remove());
 }
-////////// 課題3-2 ここからプログラムを書こう
+
 function showResult(resp){
   let data=resp.data;
 
+  let ol=document.querySelector('img#weather');
+  weather=data.weather[0].description;
+  switch(weather){
+    case "晴天":
+      ol.src="https://cdn.midjourney.com/4604ebfe-b287-4775-b170-9a9d5b16d6fb/0_3.png";
+      break;
+    case "厚い雲":
+      ol.src="https://cdn.midjourney.com/6a536c24-4a09-4574-acde-a41de0846248/0_2.png";
+      break;
+    case "雲":
+      ol.src="https://cdn.midjourney.com/3c389387-b74d-479b-832f-4c169bfe0900/0_2.png";
+      break;
+    case "曇りがち":
+      ol.src="https://cdn.midjourney.com/e4240088-c25b-4435-8042-581c7b0b6460/0_0.png";
+      break;
+    case "小雨":
+      ol.src="https://cdn.midjourney.com/3c321b55-4786-4d61-9fae-b005564b54ed/0_2.png";
+      break;
+    case "霧":
+      ol.src="https://cdn.midjourney.com/92710c27-33fc-457f-a82e-54d00c2f8d24/0_2.png";
+      break;
+    default:
+      weather.style.backgroundColor = "#FFFFFF" ;
+  }
+
   let di=document.querySelector('div#result');
-  //let p1=document.createElement('h2');
+
   let p1=document.querySelector('div#city');
   p1.textContent=data.name;
   di.insertAdjacentElement('beforeend',p1);
 
-  //let p2=document.createElement('p');
   let p2=document.querySelector('div#weather');
   p2.textContent=data.weather[0].description;
   di.insertAdjacentElement('beforeend',p2);
 
-  //let p3=document.createElement('p');
   let p3=document.querySelector('div#temp');
   p3.textContent='最高気温:'+data.main.temp_max+'  '+'最低気温:'+data.main.temp_min;
   di.insertAdjacentElement('beforeend',p3);
 
-  //let p4=document.createElement('p');
-  //let p4=document.querySelector('div#min');
-  //p4.textContent='最低気温:'+data.main.temp_min;
-  //di.insertAdjacentElement('beforeend',p4);
-
   let more=document.querySelector('div#more');
+
   let windspeed=document.querySelector('input#windspeed');
   if(windspeed.checked){
     let p6=document.createElement('p');
-    p6.textContent='風速:'+data.wind.speed;
+    p6.textContent='風速:          '+data.wind.speed;
     more.insertAdjacentElement('beforeend',p6);
   }
 
   let winddeg=document.querySelector('input#winddeg');
   if(winddeg.checked){
     let p7=document.createElement('p');
-    p7.textContent='風向:'+data.wind.deg;
+    p7.textContent='風向:          '+data.wind.deg;
     more.insertAdjacentElement('beforeend',p7);
   }
 
   let humidity=document.querySelector('input#humidity');
   if(humidity.checked){
     let p5=document.createElement('p');
-    p5.textContent='湿度:'+data.main.humidity;
+    p5.textContent='湿度:          '+data.main.humidity;
     more.insertAdjacentElement('beforeend',p5);
   }
+
+  let more1=document.querySelector('div#more1');
 
   let lon=document.querySelector('input#lon');
   if(lon.checked){
     let p8=document.createElement('p');
-    p8.textContent='緯度:'+data.coord.lon;
-    more.insertAdjacentElement('beforeend',p8);
+    p8.textContent='緯度:               '+data.coord.lon;
+    more1.insertAdjacentElement('beforeend',p8);
   }
 
   let lat=document.querySelector('input#lat');
   if(lat.checked){
     let p9=document.createElement('p');
-    p9.textContent='経度:'+data.coord.lat;
-    more.insertAdjacentElement('beforeend',p9);
+    p9.textContent='経度:               '+data.coord.lat;
+    more1.insertAdjacentElement('beforeend',p9);
   }
 }
 
@@ -132,46 +108,3 @@ function showError(err){
 function finish(){
   console.log('Ajax 通信が終わりました');
 }
- /* console.log('緯度:'+data.coord.lon);
-  console.log('経度:'+data.coord.lat);
-  //console.log(data.weather[0]);
-  console.log(data.weather[0].id);
-  console.log(data.weather[0].main);
-  console.log('天気:'+data.weather[0].description);
-  console.log(data.weather[0].icon);
-
-  console.log(data.base);
-
-  console.log(data.main.temp);
-  console.log(data.main.feels_like);
-  console.log('最低気温:'+data.main.temp_min);
-  console.log('最高気温:'+data.main.temp_max);
-  console.log(data.main.pressure);
-  console.log('湿度:'+data.main.humidity);
-  console.log(data.main.sea_level);
-  console.log(data.main.grnd_level);
-
-  console.log(data.visibility);
-
-  console.log('風速:'+data.wind.speed);
-  console.log('風向:'+data.wind.deg);
-  console.log(data.wind.gust);
-
-  console.log(data.clouds.all);
-
-  console.log(data.dt);
-
-  console.log(data.sys.type);
-  console.log(data.sys.id);
-  console.log(data.sys.country);
-  console.log(data.sys.sunrise);
-  console.log(data.sys.sunset);
-
-  console.log(data.timezone);
-
-  console.log(data.id);
-
-  console.log('都市名:'+data.name);
-  
-  console.log(data.cod);
-*/
