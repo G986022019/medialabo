@@ -70,40 +70,57 @@ function showResult(resp){
 
   let di=document.querySelector('div#result');
   let p1=document.createElement('p');
-  p1.textContent='緯度:'+data.coord.lon;
-  di.insertAdjacentElement('beforeend',p1);
+  p1.textContent='都市名:'+data.name;
+  di.insertAdjacentElement('afterend',p1);
 
   let p2=document.createElement('p');
-  p2.textContent='経度:'+data.coord.lat;
+  p2.textContent='天気:'+data.weather[0].description;
   p1.insertAdjacentElement('afterend',p2);
 
   let p3=document.createElement('p');
-  p3.textContent='天気:'+data.weather[0].description;
+  p3.textContent='最低気温:'+data.main.temp_min;
   p2.insertAdjacentElement('afterend',p3);
 
   let p4=document.createElement('p');
-  p4.textContent='最低気温:'+data.main.temp_min;
+  p4.textContent='最高気温:'+data.main.temp_max;
   p3.insertAdjacentElement('afterend',p4);
 
-  let p5=document.createElement('p');
-  p5.textContent='最高気温:'+data.main.temp_max;
-  p4.insertAdjacentElement('afterend',p5);
+  let more=document.querySelector('div#more');
+  let humidity=document.querySelector('input#humidity');
+  if(humidity.checked){
+    let p5=document.createElement('p');
+    p5.textContent='湿度:'+data.main.humidity;
+    more.insertAdjacentElement('afterend',p5);
+  }
 
-  let p6=document.createElement('p');
-  p6.textContent='湿度:'+data.main.humidity;
-  p5.insertAdjacentElement('afterend',p6);
+  let windspeed=document.querySelector('input#windspeed');
+  if(windspeed.checked){
+    let p6=document.createElement('p');
+    p6.textContent='風速:'+data.wind.speed;
+    more.insertAdjacentElement('afterend',p6);
+  }
 
-  let p7=document.createElement('p');
-  p7.textContent='風速:'+data.wind.speed;
-  p6.insertAdjacentElement('afterend',p7);
+  let winddeg=document.querySelector('input#winddeg');
+  if(winddeg.checked){
+    let p7=document.createElement('p');
+    p7.textContent='風向:'+data.wind.deg;
+    more.insertAdjacentElement('afterend',p7);
+  }
 
-  let p8=document.createElement('p');
-  p8.textContent='風向:'+data.wind.deg;
-  p7.insertAdjacentElement('afterend',p8);
+  let more1=document.querySelector('div#more1');
+  let lon=document.querySelector('input#lon');
+  if(lon.checked){
+    let p8=document.createElement('p');
+    p8.textContent='緯度:'+data.coord.lon;
+    more1.insertAdjacentElement('beforeend',p8);
+  }
 
-  let p9=document.createElement('p');
-  p9.textContent='都市名:'+data.name;
-  p8.insertAdjacentElement('afterend',p9);
+  let lat=document.querySelector('input#lat');
+  if(lat.checked){
+    let p9=document.createElement('p');
+    p9.textContent='経度:'+data.coord.lat;
+    more1.insertAdjacentElement('beforeend',p9);
+  }
 }
 
 function showError(err){
